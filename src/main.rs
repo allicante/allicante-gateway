@@ -9,11 +9,9 @@ const HEARTBEAT_INTERVAL: Duration = Duration::from_secs(5);
 /// How long before lack of client response causes a timeout
 const CLIENT_TIMEOUT: Duration = Duration::from_secs(10);
 
-/// do websocket handshake and start `MyWebSocket` actor
+/// do websocket handshake and start `Websocket` actor
 async fn ws_index(r: HttpRequest, stream: web::Payload) -> Result<HttpResponse, Error> {
-    println!("{:?}", r);
     let res = ws::start(Websocket::new(), &r, stream);
-    println!("{:?}", res);
     res
 }
 
